@@ -1,0 +1,70 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "RDS: Start SSM Port Forward",
+      "type": "shell",
+      "command": "aws ssm start-session --profile ${input:awsProfile} --target ${input:ec2InstanceId} --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{\"host\":[\"${input:rdsEndpoint}\"],\"portNumber\":[\"${input:rdsPort}\"],\"localPortNumber\":[\"${input:localPort}\"]}'",
+      "options": {
+        "shell": {
+          "executable": "/bin/bash",
+          "args": ["-c"]
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Starting session",
+          "endsPattern": "^Waiting for connections"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "awsProfile",
+      "type": "promptString",
+      "description": "AWSプロファイル名 (例: default, dev, prod)",
+      "default": "default"
+    },
+    {
+      "id": "ec2InstanceId",
+      "type": "promptString",
+      "description": "踏み台EC2インスタンスID (例: i-0123456789abcdef0)",
+      "default": ""
+    },
+    {
+      "id": "rdsEndpoint",
+      "type": "promptString",
+      "description": "RDSエンドポイント (例: mydb.xxxxx.ap-northeast-1.rds.amazonaws.com)",
+      "default": ""
+    },
+    {
+      "id": "rdsPort",
+      "type": "promptString",
+      "description": "RDSポート番号",
+      "default": "3306"
+    },
+    {
+      "id": "localPort",
+      "type": "promptString",
+      "description": "ローカルポート番号",
+      "default": "3306"
+    }
+  ]
+}

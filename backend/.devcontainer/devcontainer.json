@@ -1,0 +1,21 @@
+{
+    "name": "Backend",
+    "service": "backend",
+    "runServices": [
+        "backend"
+    ],
+    "workspaceFolder": "/backend",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "Anthropic.claude-code",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "pflannery.vscode-versionlens",
+                "Prisma.prisma"
+            ]
+        }
+    }
+}

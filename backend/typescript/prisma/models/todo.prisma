@@ -1,0 +1,32 @@
+// ========================================================= //
+// Todo Model                                                //
+// ========================================================= //
+// 基本的なTODO管理機能
+// 将来的にユーザー管理機能を追加予定
+
+model Todo {
+  id          String   @id @default(cuid())
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  completed   Boolean  @default(false)
+  priority    Priority @default(MEDIUM)
+  dueDate     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("todos")
+  @@index([completed])
+  @@index([priority])
+  @@index([dueDate])
+}
+
+// ========================================================= //
+// Enum                                                      //
+// ========================================================= //
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}

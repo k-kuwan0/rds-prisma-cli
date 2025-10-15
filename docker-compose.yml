@@ -1,0 +1,23 @@
+services:
+  terraform-runner:
+    container_name: terraform-runner
+    build:
+      context: ./dockerfiles
+      dockerfile: terraform-runner/Dockerfile
+    volumes:
+      - ./terraform-runner:/terraform-runner
+      - ./.aws:/root/.aws
+    tty: true
+  backend:
+    container_name: backend
+    build:
+      context: ./dockerfiles
+      dockerfile: backend/Dockerfile
+    volumes:
+      - ./backend:/backend
+      - backend_node_modules:/backend/typescript/node_modules
+      - ./.aws:/root/.aws
+    tty: true
+
+volumes:
+  backend_node_modules:

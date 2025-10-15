@@ -1,0 +1,22 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.guides.bracketPairs": true,
+    "editor.lineHeight": 1.5,
+    "editor.fontSize": 12,
+    "editor.tabSize": 2,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
+    "[javascript][typescript][json]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[prisma]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "Prisma.prisma"
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sample monorepo",
+  "packageManager": "pnpm@10.18.3",
+  "scripts": {
+    "prisma:generate:dev": "APP_ENV=dev tsx scripts/prisma/generateClient.ts",
+    "prisma:migrate:create:dev": "APP_ENV=dev tsx scripts/prisma/createMigration.ts",
+    "prisma:migrate:deploy:dev": "APP_ENV=dev tsx scripts/prisma/deployMigration.ts",
+    "prisma:studio:dev": "APP_ENV=dev tsx scripts/prisma/openStudio.ts",
+    "prisma:seed:dev": "APP_ENV=dev tsx scripts/prisma/seedDatabase.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.4",
+    "prisma": "^6.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.908.0",
+    "@prisma/client": "6.17.1",
+    "dotenv": "^17.2.3"
+  }
+}
