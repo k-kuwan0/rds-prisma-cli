@@ -2,8 +2,9 @@
 // import                                                    //
 // ========================================================= //
 import { config } from 'dotenv';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import { existsSync } from 'fs';
+import { fileURLToPath } from 'url';
 
 // ========================================================= //
 // function                                                  //
@@ -15,6 +16,8 @@ import { existsSync } from 'fs';
  * 優先順位: APP_ENV > NODE_ENV > デフォルト(local)
  */
 function loadEnvironment(): void {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
   const env = process.env.APP_ENV || process.env.NODE_ENV || 'local';
   const envPath = resolve(__dirname, `../../environments/.env.${env}`);
 
